@@ -47,6 +47,48 @@ function photographerTemplate(data) {
         return (article);
     }
 
-    function getHeaderPhotographer(){}
+    // Affichage du bandeau infos sur la page photographe
+    function getHeaderPhotographer() {
+
+        const picture = `./assets/photographers/${portrait}`;
+        const photographHeader = document.querySelector(".photograph-header");
+
+        const infoLeft = document.createElement('article');
+        infoLeft.classList.add("infoList");
+
+        const infoRight = document.createElement('article');
+        infoRight.classList.add("infoRight");
+        
+        photographHeader.appendChild(infoLeft);
+        photographHeader.appendChild(infoRight);
+
+        const h1 = document.createElement('h1');
+        h1.textContent = name;
+        h1.classList.add('header__name');
+
+        const location = document.createElement('p');
+        location.textContent = city + ', ' + country;
+        location.classList.add = ("header__location");
+
+        const text = document.createElement('p');
+        text.textContent = tagline;
+        text.classList.add = ("header__tagline");
+
+        infoLeft.appendChild(h1);
+        infoLeft.appendChild(location);
+        infoLeft.appendChild(text);
+
+        const imgContainer = document.createElement('div');
+        imgContainer.classList.add = ("header_imgContainer");
+        
+        const img = document.createElement('img');
+        img.setAttribute("src", picture);
+        img.classList.add("header__img");
+
+        imgContainer.appendChild(img);
+        infoRight.appendChild(imgContainer);
+    }
+
     return { getUserCardDOM , getHeaderPhotographer}
 }
+
