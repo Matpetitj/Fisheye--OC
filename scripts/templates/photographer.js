@@ -49,9 +49,9 @@ function photographerTemplate(data) {
 
     // Affichage du bandeau infos sur la page photographe
     function getHeaderPhotographer() {
-
+//créer le bouton ici avec un event listener pour le positionner correctement
         const picture = `./assets/photographers/${portrait}`;
-        const photographHeader = document.querySelector(".photograph-header");
+        const photographHeader = document.createElement("div");
 
         const infoLeft = document.createElement('article');
         infoLeft.classList.add("infoList");
@@ -87,6 +87,8 @@ function photographerTemplate(data) {
 
         imgContainer.appendChild(img);
         infoRight.appendChild(imgContainer);
+
+        return photographHeader;
     }
 
     return { getUserCardDOM , getHeaderPhotographer}

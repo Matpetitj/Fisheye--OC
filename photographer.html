@@ -15,6 +15,16 @@
       <div class="photograph-header">
         <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
       </div>
+      <div class="select-container">
+        <label for="tri">Trier par :</label>
+        <select id="tri" name="tri">
+          <option value="type00"></option>
+          <option value="type01">Popularité</option>
+          <option value="type02">Date</option>
+          <option value="type03">Titre</option>
+        </select>
+      </div>
+      <div class="media-container"></div>
     </main>
     <div id="contact_modal">
 			<div class="modal">
@@ -32,6 +42,8 @@
 			</div>
 		</div>
     <script src="./scripts/API.js"></script>
+    <script src="./scripts/templates/photographer.js"></script>
+    <script src="./scripts/templates/media.js"></script>
     <script src="./scripts/pages/photographer.js"></script>
     <script src="./scripts/utils/contactForm.js"></script>
   </body>
