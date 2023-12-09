@@ -49,17 +49,33 @@ function photographerTemplate(data) {
 
     // Affichage du bandeau infos sur la page photographe
     function getHeaderPhotographer() {
-//créer le bouton ici avec un event listener pour le positionner correctement
+//créer le bouton ici avec un event listener / le positionner correctement
         const picture = `./assets/photographers/${portrait}`;
         const photographHeader = document.createElement("div");
+        photographHeader.classList.add("header__container")
 
         const infoLeft = document.createElement('article');
-        infoLeft.classList.add("infoList");
+        infoLeft.classList.add("infoLeft");
 
         const infoRight = document.createElement('article');
         infoRight.classList.add("infoRight");
+
+        const btnCenter = document.createElement('div');
+        btnCenter.classList.add("center__container");
+        
+        const btnContact = document.createElement('button');
+        btnContact.textContent = "Contactez-moi";
+        btnContact.classList.add("contact_button");
+        btnCenter.appendChild(btnContact);
+
+        btnContact.addEventListener("click", (e) => {
+            e.preventDefault();
+            console.log(btnContact);
+            displayModal();
+        })
         
         photographHeader.appendChild(infoLeft);
+        photographHeader.appendChild(btnCenter);
         photographHeader.appendChild(infoRight);
 
         const h1 = document.createElement('h1');
@@ -68,18 +84,18 @@ function photographerTemplate(data) {
 
         const location = document.createElement('p');
         location.textContent = city + ', ' + country;
-        location.classList.add = ("header__location");
+        location.classList.add("header__location");
 
         const text = document.createElement('p');
         text.textContent = tagline;
-        text.classList.add = ("header__tagline");
+        text.classList.add("header__tagline");
 
         infoLeft.appendChild(h1);
         infoLeft.appendChild(location);
         infoLeft.appendChild(text);
 
         const imgContainer = document.createElement('div');
-        imgContainer.classList.add = ("header_imgContainer");
+        imgContainer.classList.add("header__imgContainer");
         
         const img = document.createElement('img');
         img.setAttribute("src", picture);

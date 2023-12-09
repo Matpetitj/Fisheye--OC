@@ -87,3 +87,53 @@ h1 {
 .card__containerImg {
     margin-bottom: 10px;
 }
+
+/* Style header */
+
+.photograph-header {
+    display: flex;
+    justify-content: center;
+}
+
+.header__container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding-left: 60px;
+    padding-right: 60px;
+}
+
+.header__imgContainer {
+    border-radius: 100%;
+}
+
+.header__img {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 100%;
+}
+
+.infoLeft {
+    margin-right: -100px;
+}
+
+.header__location {
+    color: #901C1C;
+    font-size: 30px;
+    margin-top: 10px;
+    margin-bottom: 0px;
+}
+
+.header__name {
+   color: #D3573C;
+   font-size: 50px;
+   margin-bottom: 0px;
+}
+
+.header__tagline {
+    font-size: 20px;
+    color: #525252;
+    font-weight: 500;
+}
