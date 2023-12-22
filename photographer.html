@@ -18,29 +18,40 @@
       <div class="select-container">
         <label for="tri">Trier par :</label>
         <select id="tri" name="tri">
-          <option value="type00"></option>
-          <option value="type01">Popularité</option>
-          <option value="type02">Date</option>
-          <option value="type03">Titre</option>
+          <option value="type00">Popularité</option>
+          <option value="type01">Date</option>
+          <option value="type02">Titre</option>
         </select>
       </div>
       <div class="media-container"></div>
     </main>
     <div id="contact_modal">
-			<div class="modal">
-				<header>
-          <h2>Contactez-moi</h2>
-          <img src="assets/icons/close.svg" onclick="closeModal()" />
+      <div class="modal">
+        <header>
+          <div class="header-contactform">
+            <h2>Contactez-moi</h2>
+            <p id="nameContactForm"></p>
+          </div>
+          <img id="contact-form_close-button" tabindex='0' aria-label='Fermer la modale contact' src="assets/icons/close.svg" onclick="closeModal()" onkeydown="closeModalByKeyPress(event)" />
         </header>
-				<form>
-					<div>
-						<label>Prénom</label>
-						<input />
-					</div>
-          <button class="contact_button">Envoyer</button>
-				</form>
-			</div>
-		</div>
+        <form>
+          <div>
+            <label  tabindex="1" for="firstname">Prénom</label>
+            <input type="text" id="firstname" name="firstname" required />
+
+            <label tabindex="2" for="lastname">Nom</label>
+            <input type="text" id="lastname" name="lastname" required />
+
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required />
+
+            <label for="yourmessage">Message</label>
+            <input type="text" id="yourmessage" name="yourmessage"  />
+          </div>
+          <button aria-label='Envoyer les données' class="contact_button" id="contact_button">Envoyer</button>
+        </form>
+      </div>
+    </div>
     <script src="./scripts/API.js"></script>
     <script src="./scripts/templates/photographer.js"></script>
     <script src="./scripts/templates/media.js"></script>
