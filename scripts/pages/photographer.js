@@ -12,12 +12,18 @@ async function displayData(photographer) {
     const photographerHeader = headerModel.getHeaderPhotographer();
     headerSection.appendChild(photographerHeader);
     
+    const mediaSection = document.querySelector(".media-container");
+    const mediaModel = mediaTemplate(photographer);
+    const media = mediaModel.getMedia();
+    mediaSection.appendChild(media);
 }
 
 async function init() {
     const id = getId();
     const { photographers } = await getPhotographers();
-    console.log(photographers);
+    const { media } = await getPhotographers();
+    // console.log(photographers);
+    // console.log(media);
     const position = photographers.findIndex((element) => element.id == id );
     const photographer = photographers[position];
     console.log(photographer);
