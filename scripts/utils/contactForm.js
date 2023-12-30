@@ -7,3 +7,6 @@ function closeModal() {
     const modal = document.getElementById("contact_modal");
     modal.style.display = "none";
 }
+
+//: ajouter la fonction submit du formulaire contact 
+// afficher dans une console log les donnes du formulaire

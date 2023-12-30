@@ -1,88 +1,42 @@
 function mediaTemplate (data) {
 
-    const { id, photographerId, title, video, image, likes, date, price } = data;
+    const { id, photographerId, title, video, image, likes, date, price, name } = data;
 
+    const nameFolder = name.split(" ")[0].replace("-", " ");
 
     function getMedia() {
         
-        // let imgBloc = document.querySelector(".media-container");
-        // imgBloc.appendChild(card); A FAIRE DANS LA PAGE
-
-        let card = document.createElement('button');
+        let card = document.createElement('div');
 
         card.classList.add('photographer-card');
         // card.setAttribute aria-label
 
-        let imgContainer = document.createElement('div');
+        let imgContainer = document.createElement('img');
         imgContainer.classList.add('photographer-imgContainer');
-
+        imgContainer.src = `./assets/Sample Photos/${nameFolder}/${image}`;
         let infoContainer = document.createElement('div');
         infoContainer.classList.add('photographer-infoContainer');
 
-        let title = document.createElement('p');
-        title.classList.add('photographer-title');
-        title.textContent = title;
+        let titleMedia = document.createElement('p');
+        titleMedia.classList.add('photographer-title');
+        titleMedia.textContent = title;
 
-        let likes = document.createElement('div');
-        likes.classList.add('photographer-likes');    
+        let likesMedia = document.createElement('div');
+        likesMedia.classList.add('photographer-likes');    
 
         let number = document.createElement('p');
         number.classList.add('photographer-numbers');
-        // number.innerText = likes; + icon des likes
+        number.innerText = likes; 
 
         card.appendChild(imgContainer);
         card.appendChild(infoContainer);
-        infoContainer.appendChild(title);
-        infoContainer.appendChild(likes);
-        likes.appendChild(number);
+        infoContainer.appendChild(titleMedia);
+        infoContainer.appendChild(likesMedia);
+        likesMedia.appendChild(number);
 
-    }
+        // Mettre le calcul des likes dans la card
 
-    async function likesFactory() {
-        //gère l'ensemble du systeme de likes sur photos
-    
-        function addingOne(heart) {
-            //fonction d'incrementation pour les chiffres sur les photos et le total
-            let blocLikes = document.getElementById('infoBloc__Likes')
-            let previous = heart.nextSibling
-            let number = Number(previous.innerText)
-            if (heart.classList.contains('liked')) {
-                previous.innerText = number + 1
-                blocLikes.innerText = Number(blocLikes.innerText) + 1
-            } else {
-                previous.innerText = number - 1
-                blocLikes.innerText = Number(blocLikes.innerText) - 1
-            }
-        }
-    
-        setTimeout(() => {
-            let hearts = document.querySelectorAll('.fa-heart');
-    
-            for (const heart of hearts) {
-                heart.addEventListener('click', function liked() {
-                    heart.classList.toggle('liked')
-                    addingOne(heart)
-                });
-            }
-        }, "100")
-    
-        totalLikes()
-    }
-    
-    async function totalLikes() {
-        //gère l'affichage du total des likes
-        setTimeout(() => {
-            let hearts = document.querySelectorAll('.fa-heart');
-            let blocLikes = document.getElementById('infoBloc__Likes')
-            let total = 0;
-    
-            for (const heart of hearts) {
-                let likes = heart.nextSibling
-                let number = Number(likes.innerText)
-                total = total + number
-            }
-            blocLikes.innerText = total
-        }, "200")
+        return card; 
     }
 
     return {getMedia};
