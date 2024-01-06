@@ -1,3 +1,7 @@
+:root {
+    --red: #901C1C;
+}
+
 #contact_modal {
     display: none;
 }
@@ -5,7 +9,7 @@
 .photograph-header {
     background-color: #FAFAFA;
     height: 300px;
-    margin: 0 100px;
+   
 }
 
 .contact_button {
@@ -73,9 +77,17 @@ form div {
 
 form input {
     width: 100%;
-    height: 68px;
+    height: 50px;
     border: none;
     border-radius: 5px;
+}
+
+input[type="text" i] {
+    padding-left: 10px;
+}
+
+input[type="email" i] {
+    padding-left: 10px;
 }
 
 /* AJOUT */
@@ -91,3 +103,49 @@ form input {
 #yourmessage {
     height: 120px;
 }
+
+#main {
+    margin: 0 100px;
+}
+
+.select-container {
+    margin: 20px 0 40px 0;
+}
+
+.select-container label {
+    color: #000000;
+    font-weight: 600;
+}
+
+.media-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.photographer-card {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+}
+
+.photographer-img {
+    width: 350px;
+    height: 300px;
+    border-radius: 5px;
+    object-fit: cover;
+}
+
+.photographer-infoContainer {
+    display: flex;
+    justify-content: space-between;
+    color: var(--red);
+    font-weight: 500;
+    font-size: 20px;
+}
+
+.photographer-likes {
+    font-weight: 600;
+}
+

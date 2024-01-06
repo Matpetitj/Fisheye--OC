@@ -12,7 +12,7 @@ function mediaTemplate (data) {
         // card.setAttribute aria-label
 
         let imgContainer = document.createElement('img');
-        imgContainer.classList.add('photographer-imgContainer');
+        imgContainer.classList.add('photographer-img');
         imgContainer.src = `./assets/Sample Photos/${nameFolder}/${image}`;
         let infoContainer = document.createElement('div');
         infoContainer.classList.add('photographer-infoContainer');
