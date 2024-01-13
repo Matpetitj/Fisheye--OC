@@ -21,7 +21,6 @@ function submit() {
         let yourmessage = document.getElementById('yourmessage').value
         console.log("Message : " + yourmessage)
     }
-    
 }
 
 submitBtn.addEventListener("click", (e) => {

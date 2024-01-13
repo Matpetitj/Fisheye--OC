@@ -5,6 +5,7 @@
     <meta charset="utf-8">
     <link rel="icon" type="image/png" href="assets/favicon.png">
     <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/75b27a2f9b.js" crossorigin="anonymous"></script>
     <title>Fisheye - photographe </title>
   </head>
   <body>
@@ -15,12 +16,12 @@
       <div class="photograph-header">
         <!-- <button class="contact_button" onclick="displayModal()">Contactez-moi</button> -->
       </div>
-      <div class="select-container">
+      <div class="filter-container">
         <label for="tri">Trier par </label>
         <select id="tri" name="tri">
-          <option value="type00">Popularité</option>
-          <option value="type01">Date</option>
-          <option value="type02">Titre</option>
+          <option value="type00" id="select-popularity">Popularité</option>
+          <option value="type01" id="select-date">Date</option>
+          <option value="type02" id="select-title">Titre</option>
         </select>
       </div>
       <div class="media-container"></div>
@@ -51,6 +52,9 @@
           <button aria-label='Envoyer les données' class="submit_button" id="submit_button">Envoyer</button>
         </form>
       </div>
+    </div>
+    <div class="medias-modal">
+      <div class="media-modal-content"></div>
     </div>
     <script src="./scripts/API.js"></script>
     <script src="./scripts/templates/photographer.js"></script>

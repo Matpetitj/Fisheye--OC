@@ -108,14 +108,16 @@ input[type="email" i] {
     margin: 0 100px;
 }
 
-.select-container {
+.filter-container {
     margin: 20px 0 40px 0;
 }
 
-.select-container label {
+.filter-container label {
     color: #000000;
     font-weight: 600;
 }
+
+/* Style Media cards */
 
 .media-container {
     display: flex;
@@ -130,12 +132,14 @@ input[type="email" i] {
     margin-bottom: 15px;
 }
 
-.photographer-img {
+.photographer-media {
     width: 350px;
     height: 300px;
     border-radius: 5px;
     object-fit: cover;
 }
+
+/* Informations des cards */
 
 .photographer-infoContainer {
     display: flex;
@@ -146,6 +150,27 @@ input[type="email" i] {
 }
 
 .photographer-likes {
+    display: flex;
+    align-items: center;
     font-weight: 600;
+}
+
+.photographer-numbers {
+    margin-right: 10px;
+}
+
+.heart-icon {
+    cursor: pointer;
+}
+
+.heart-icon:hover {
+    transform: scale(1.1);
+    transition-duration: 0.5s;
+}
+
+.medias-modal {
+    background-color: black;
+    width: 500px;
+    height: 500px;
 }
 
