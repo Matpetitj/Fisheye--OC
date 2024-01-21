@@ -7,6 +7,8 @@ function mediaTemplate (data) {
     const imgSource = `./assets/Sample Photos/${nameFolder}/${image}`;
     const vidSource = `./assets/Sample Photos/${nameFolder}/${video}`;
     let nbrLikes = likes;
+
+    
     // créer une seule mediaSource qui contient un if / else pour 
     // le media et la return pour l'utiliser dans la lightbox
 
@@ -82,6 +84,13 @@ function mediaTemplate (data) {
             number.textContent = nbrLikes;
         })
 
+        // Ouverture lightbox
+
+        card.addEventListener("click", function (event){
+            event.preventDefault();
+            openLightbox();
+        })
+
         return card; 
     };
 
@@ -109,7 +118,7 @@ function mediaTemplate (data) {
         console.log(div);
         return div;
     }
-    return {getMedia, getMediaLightbox, nbrLikes};
+    return {getMedia, getMediaLightbox, nbrLikes, price, date, id, photographerId};
 }
 
 
