@@ -97,6 +97,7 @@ function mediaTemplate (data) {
     function getMediaLightbox (){
 
         const div = document.createElement('div');
+        div.classList.add("media-container");
 
         if (image) {
             const selectImage = document.createElement('img');
@@ -115,32 +116,17 @@ function mediaTemplate (data) {
             selectVideo.controls = true;
             div.appendChild(selectVideo);
         }
-        console.log(div);
+
+        const mediaTitleContainer = document.createElement("div");
+        mediaTitleContainer.classList.add("media-title-container")
+        div.appendChild(mediaTitleContainer);
+
+        const mediaTitle = document.createElement("p");
+        mediaTitle.classList.add("media-title");
+        mediaTitle.textContent = title;
+        mediaTitleContainer.appendChild(mediaTitle);
+
         return div;
     }
     return {getMedia, getMediaLightbox, nbrLikes, price, date, id, photographerId};
 }
-
-
-
-// // Alimenter la fonction par le tableau des Medias trié
-// function displaySortedElements(arraySorted){
-//     const wrapper = document.querySelector(".wrapper");
-//     let positionReference = 0;
-//     // Réorganisation des Médias triés par leur Popularité (sans supprimer ce qui est déjà affiché !) :
-//     arraySorted.forEach(element => {
-//         // console.log(wrapper.childNodes);
-//         const arrayCreatedElement = Array.prototype.slice.call(wrapper.childNodes); // Convertir une NodeList vers un tableau d'éléments HTML
-//         // console.log(arrayCreatedElement);
-
-//         let positionElement = arrayCreatedElement.findIndex((mediaContainer) =>
-//             (mediaContainer.dataset.id == element.id)
-//         );
-
-//         const nodeSearched = arrayCreatedElement[positionElement];
-//         const nodeReference = arrayCreatedElement[positionReference];
-//        // console.log(element.title +"/"+element.likes +" / position "+ positionElement + "deplacer vers: " +positionReference);
-//         wrapper.insertBefore(nodeSearched, nodeReference);
-//         positionReference++;
-//     });
-// }

@@ -124,6 +124,7 @@ input[type="email" i] {
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-between;
+    padding-bottom: 40px;
 }
 
 .photographer-card {
@@ -137,6 +138,7 @@ input[type="email" i] {
     height: 300px;
     border-radius: 5px;
     object-fit: cover;
+    cursor: pointer;
 }
 
 /* Informations des cards */
@@ -166,6 +168,40 @@ input[type="email" i] {
 .heart-icon:hover {
     transform: scale(1.1);
     transition-duration: 0.5s;
+}
+
+/* Style Likes & Prix */
+
+#infos-container {
+    position: fixed;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    bottom: 0px;
+    right: 30px;
+    background-color: #DB8876;
+    width: 200px;
+    padding: 0px 25px;
+    border-radius: 5px 5px 0px 0px;
+}
+
+.likes-area {
+    display: flex;
+    align-items: center;
+}
+
+.total-likes {
+    margin-right: 5px;
+    font-weight: 600;
+}
+
+.tarifs-area {
+    display: flex;
+    align-items: center;
+}
+
+.daily-price {
+    font-weight: 600;
 }
 
 

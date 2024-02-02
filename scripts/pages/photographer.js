@@ -1,11 +1,11 @@
-let mediaFilterArray = []
+let mediaArray = []
 const infosContainer = document.getElementById('infos-container');
 
 //Mettre le code JavaScript lié à la page photographer.html
 function getId() {
     let params = (new URL(document.location)).searchParams;
     let id = params.get('id');
-    console.log(id);
+    // console.log(id);
     return id;
 }
 
@@ -20,7 +20,7 @@ async function displayData(photographer, listMedia) {
     let totalLikes = 0;
     listMedia.forEach(media => {
         media = {...media, name: photographer.name};
-        console.log(media);
+        // console.log(media);
         const mediaModel = mediaTemplate(media);
         const mediaCard = mediaModel.getMedia();
         // console.log(mediaCard);
@@ -43,23 +43,6 @@ function closeLightbox() {
     let mediaModal = document.querySelector('.medias-modal');
     mediaModal.style.display = "none";
 }
-    
-
-function mediaFilter(medias){
-
-    //for each
-
-    // Récupère le titre
-    const Title = document.getElementById("select-title");
-
-    Title.addEventListener("click", function (event) {
-        event.preventDefault();
-
-        const arraySorted = mediaFilterArray.sort( function (){
-
-        })
-    })
-}
 
 function displayLikesAndPrice(likes, price) {
     // Tarifs et Likes
@@ -73,7 +56,7 @@ function displayLikesAndPrice(likes, price) {
     totalLikes.classList.add('total-likes');
     totalLikes.textContent = likes;
 
-    let heartIcon = document.createElement('i');
+    const heartIcon = document.createElement('i');
     heartIcon.setAttribute('class', 'heart-icon fa-heart fa-solid fa-sharp fa-lg');
 
     likesArea.appendChild(totalLikes);
@@ -87,6 +70,7 @@ function displayLikesAndPrice(likes, price) {
     const dailyPrice = document.createElement('p');
     dailyPrice.classList.add("daily-price");
     dailyPrice.textContent = `${price}€ / jour`;
+    tarifsArea.appendChild(dailyPrice);
 }
 
 async function init() {
