@@ -34,14 +34,77 @@ async function displayData(photographer, listMedia) {
    
 }
 
-function openLightbox() {
+var slideIndex = 0;
+function openLightbox(id) {
     let mediaModal = document.querySelector('.medias-modal');
     mediaModal.style.display = "block";
+    // chercher l'element avec id selectionné
+    slideIndex = searchPosition(id);
+    console.log(slideIndex,"/", id)
+    showSlides(slideIndex);
 }
 
 function closeLightbox() {
     let mediaModal = document.querySelector('.medias-modal');
     mediaModal.style.display = "none";
+}
+
+function searchPosition(id) {
+    let slides = document.getElementsByClassName("mySlides");
+    for (i = 0; i < slides.length; i++) {
+      console.log(slides[i].id);
+      if(slides[i].id == id) return i;
+  }
+  return -1;
+}
+
+
+function plusSlides(n) {
+  showSlides(slideIndex += n);
+}
+
+function currentSlide(n) {
+  showSlides(slideIndex = n);
+}
+
+function showSlides(n) {
+  let i;
+  let slides = document.getElementsByClassName("mySlides");
+  if (n > slides.length-1) {slideIndex = 0}
+  if (n < 0) {slideIndex = slides.length-1}
+  for (i = 0; i < slides.length; i++) {
+      slides[i].style.display = "none";
+  }
+  slides[slideIndex].style.display = "block";
+}
+
+function sortedMedias(sortedArray){
+    let refPos = 0;
+
+    sortedArray.forEach(element => {
+        
+    })
+}
+
+function mediasFilter(medias){
+    const select = document.getElementById('tri');
+    const selectByPopularity = document.getElementById('select-popularity');
+    const selectByDate = document.getElementById('select-date');
+    const selectByTitle = document.getElementById('select-title');
+
+    selectByTitle.addEventListener("click", function(event) {
+        event.preventDefault();
+        event.stopPropagation();
+
+        const sortedArray = mediaArray.sort(function (a, b) {
+            if(a.title < b.title){
+                return -1;
+            }
+            if(a.title > b.title){
+                return 0;
+            };
+        })
+    })
 }
 
 function displayLikesAndPrice(likes, price) {

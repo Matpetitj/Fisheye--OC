@@ -42,7 +42,7 @@ function mediaTemplate (data) {
 
         mediaContent.addEventListener("click", function(event){
             event.preventDefault();
-            openModal();
+            openLightbox();
         })
         card.appendChild(mediaContent);
 
@@ -97,7 +97,7 @@ function mediaTemplate (data) {
     function getMediaLightbox (){
 
         const div = document.createElement('div');
-        div.classList.add("media-container");
+        div.classList.add("mySlides");
 
         if (image) {
             const selectImage = document.createElement('img');
