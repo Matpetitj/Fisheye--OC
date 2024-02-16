@@ -1,6 +1,5 @@
-let mediaArray = []
 const infosContainer = document.getElementById('infos-container');
-
+let photographer = null;
 //Mettre le code JavaScript lié à la page photographer.html
 function getId() {
     let params = (new URL(document.location)).searchParams;
@@ -9,14 +8,17 @@ function getId() {
     return id;
 }
 
-async function displayData(photographer, listMedia) {
+async function displayData(listMedia) {
     const headerSection = document.querySelector(".photograph-header");
+    headerSection.innerHTML="";
     const headerModel = photographerTemplate(photographer);
     const photographerHeader = headerModel.getHeaderPhotographer();
     headerSection.appendChild(photographerHeader);
     
     const mediaSection = document.querySelector(".media-container");
     const mediaModalContent = document.querySelector(".media-modal-content");
+    mediaSection.innerHTML= "";
+    mediaModalContent.innerHTML="";
     let totalLikes = 0;
     listMedia.forEach(media => {
         media = {...media, name: photographer.name};
@@ -78,42 +80,13 @@ function showSlides(n) {
   slides[slideIndex].style.display = "block";
 }
 
-function sortedMedias(sortedArray){
-    let refPos = 0;
-
-    sortedArray.forEach(element => {
-        
-    })
-}
-
-function mediasFilter(medias){
-    const select = document.getElementById('tri');
-    const selectByPopularity = document.getElementById('select-popularity');
-    const selectByDate = document.getElementById('select-date');
-    const selectByTitle = document.getElementById('select-title');
-
-    selectByTitle.addEventListener("click", function(event) {
-        event.preventDefault();
-        event.stopPropagation();
-
-        const sortedArray = mediaArray.sort(function (a, b) {
-            if(a.title < b.title){
-                return -1;
-            }
-            if(a.title > b.title){
-                return 0;
-            };
-        })
-    })
-}
-
 function displayLikesAndPrice(likes, price) {
     // Tarifs et Likes
 
-    const likesArea = document.createElement('div');
-    likesArea.classList.add("likes-area");
-
-    infosContainer.appendChild(likesArea);
+    const likesArea = document.querySelector(".likes-area");
+    likesArea.innerHTML="";
+    
+//    infosContainer.appendChild(likesArea);
 
     const totalLikes = document.createElement('p');
     totalLikes.classList.add('total-likes');
@@ -125,8 +98,8 @@ function displayLikesAndPrice(likes, price) {
     likesArea.appendChild(totalLikes);
     likesArea.appendChild(heartIcon);
 
-    const tarifsArea = document.createElement('div');
-    tarifsArea.classList.add("tarifs-area");
+    const tarifsArea = document.querySelector(".tarifs-area");
+    tarifsArea.innerHTML="";
 
     infosContainer.appendChild(tarifsArea);
 
@@ -142,10 +115,56 @@ async function init() {
     const { media } = await getPhotographers();
     // Recuperer le photographer en question 
     const position = photographers.findIndex((element) => element.id == id );
-    const photographer = photographers[position];
+    photographer = photographers[position];
     // recuperer les media du photographer en question 
-    const listMedias = media.filter((element) => element.photographerId == id);
-    displayData(photographer, listMedias);
+    const listMedia = media.filter((element) => element.photographerId == id);
+    displayData(listMedia);
+    sortMedias(listMedia);
 }
+/* Bloc de tri des cartes */
 
+function sortMedias(listMedia){
+    const selectSort = document.getElementById("tri");
+    console.log(listMedia);
+    selectSort.addEventListener("change", function(event) {
+        event.preventDefault();
+        event.stopPropagation();
+        console.log("selectSort"+selectSort.value)
+        // Il faut ajouter une condition de vérification de la value selected 
+        if(selectSort.value=="type00"){
+            listMedia.sort(function (a, b) {
+                if(a.likes < b.likes){
+                    return -1;
+                }
+                if(a.likes > b.likes){
+                    return 1;
+                };
+                return 0; 
+            });
+        }
+        if(selectSort.value=="type01"){
+            listMedia.sort(function (a, b) {
+                if(a.date < b.date){
+                    return -1;
+                }
+                if(a.date > b.date){
+                    return 1;
+                };
+                return 0; 
+            });
+        }
+        if(selectSort.value=="type02"){
+        listMedia.sort(function (a, b) {
+            if(a.title < b.title){
+                return -1;
+            }
+            if(a.title > b.title){
+                return 1;
+            };
+            return 0; 
+        });
+    }
+    displayData(listMedia);
+    });
+}
 init();

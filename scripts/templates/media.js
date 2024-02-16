@@ -18,7 +18,8 @@ function mediaTemplate (data) {
         let mediaContent = document.createElement('div');
 
         card.classList.add('photographer-card');
-        // card.setAttribute aria-label
+        card.setAttribute("tabIndex" , 0);
+        card.setAttribute("data-id" , id);
 
         // Source dynamique vers les medias :
 
@@ -40,10 +41,10 @@ function mediaTemplate (data) {
             mediaContent.appendChild(selectVideo);
         }
 
-        mediaContent.addEventListener("click", function(event){
-            event.preventDefault();
-            openLightbox();
-        })
+        // mediaContent.addEventListener("click", function(event){
+        //     event.preventDefault();
+        //     openLightbox(id);
+        // })
         card.appendChild(mediaContent);
 
         let infoContainer = document.createElement('div');
@@ -59,6 +60,7 @@ function mediaTemplate (data) {
         let number = document.createElement('p');
         number.classList.add('photographer-numbers');
         number.textContent = likes; 
+        number.setAttribute('aria-label', 'likes');
 
         let heartIcon = document.createElement('i');
         heartIcon.setAttribute('class', 'heart-icon fa-heart fa-solid fa-sharp fa-lg');
@@ -88,7 +90,7 @@ function mediaTemplate (data) {
 
         card.addEventListener("click", function (event){
             event.preventDefault();
-            openLightbox();
+            openLightbox(id);
         })
 
         return card; 
@@ -98,6 +100,7 @@ function mediaTemplate (data) {
 
         const div = document.createElement('div');
         div.classList.add("mySlides");
+        div.id = id;
 
         if (image) {
             const selectImage = document.createElement('img');

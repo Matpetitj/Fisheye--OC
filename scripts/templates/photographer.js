@@ -16,17 +16,21 @@ function photographerTemplate(data) {
         
         const img = document.createElement('img');
         img.setAttribute("src", picture);
-        img.setAttribute("alt", 'photo de ' + name);
+        img.setAttribute("alt", 'Photo de ' + name);
        
         const h2 = document.createElement('h2');
         h2.textContent = name;
+        h2.setAttribute('aria-label', `Photographe ${name}`);
        
         const location = document.createElement('h3');
         location.textContent = city + ', ' + country;
+        location.setAttribute('aria-label', `Le photographe ${name} vient de ${city}, ${country}`);
         const text = document.createElement('p');
         text.textContent = tagline;
+        text.setAttribute('aria-label', `La devise de ${name} est : "${tagline}"`);
         const dayPrice = document.createElement('p'); 
         dayPrice.textContent = price + '€/jour';
+        dayPrice.setAttribute('aria-label', `La prestation de ce photographe est de ${price} par jour`);
 
         imgContainer.classList.add('card__containerImg');
         location.classList.add('card__location');
