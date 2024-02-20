@@ -86,8 +86,6 @@ function displayLikesAndPrice(likes, price) {
     const likesArea = document.querySelector(".likes-area");
     likesArea.innerHTML="";
     
-//    infosContainer.appendChild(likesArea);
-
     const totalLikes = document.createElement('p');
     totalLikes.classList.add('total-likes');
     totalLikes.textContent = likes;
@@ -134,10 +132,10 @@ function sortMedias(listMedia){
         if(selectSort.value=="type00"){
             listMedia.sort(function (a, b) {
                 if(a.likes < b.likes){
-                    return -1;
+                    return 1;
                 }
                 if(a.likes > b.likes){
-                    return 1;
+                    return -1;
                 };
                 return 0; 
             });
@@ -164,7 +162,45 @@ function sortMedias(listMedia){
             return 0; 
         });
     }
+
+    //Commenter si j'utilise l'autre option
     displayData(listMedia);
+
+    // Deuxieme façon pour actualiser le dom 
+    // reorganizeMedias(listMedia);
+
     });
 }
+
+function reorganizeMedias(listMedia){
+    const wrapper = document.querySelector(".media-container");
+    const wrapperModal = document.querySelector(".media-modal-content");
+    
+    let positionRefence = 0; 
+    listMedia.forEach(element => {
+        console.log("element", element);
+      
+        const arrayCreatedMedias = Array.prototype.slice.call(wrapper.childNodes); 
+        const arrayCreatedMediasModal = Array.prototype.slice.call(wrapperModal.childNodes); 
+
+        let positionElement = arrayCreatedMedias.findIndex((mediaCard) => (
+            mediaCard.dataset.id == element.id
+        ));
+        console.log("positionElement", positionElement);
+
+        // Deplacer le node recherché sur la page index avant le node de la position de reference 
+        const nodeSearched = arrayCreatedMedias[positionElement];
+        const nodeReference = arrayCreatedMedias[positionRefence];
+        wrapper.insertBefore(nodeSearched, nodeReference);
+
+        // Deplacer le node modal recherché sur la lightbox avant l'element de la position de reference 
+        const nodeSearchedModal = arrayCreatedMedias[positionElement];
+        const nodeReferenceModal = arrayCreatedMedias[positionRefence];
+        wrapperModal.insertBefore(nodeSearchedModal, nodeReferenceModal);
+
+
+        positionRefence++;
+    });
+}
+
 init();

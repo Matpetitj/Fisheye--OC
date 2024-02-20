@@ -19,7 +19,7 @@ function mediaTemplate (data) {
 
         card.classList.add('photographer-card');
         card.setAttribute("tabIndex" , 0);
-        card.setAttribute("data-id" , id);
+        card.dataset.id = id;
 
         // Source dynamique vers les medias :
 
@@ -104,7 +104,7 @@ function mediaTemplate (data) {
 
         if (image) {
             const selectImage = document.createElement('img');
-            selectImage.classList.add("photographer-media");
+            selectImage.classList.add("lightbox-media");
             selectImage.setAttribute('src', imgSource);
             selectImage.setAttribute('alt', `${title}`);
             div.appendChild(selectImage);
@@ -112,7 +112,7 @@ function mediaTemplate (data) {
 
         if(video){
             const selectVideo = document.createElement('video');
-            selectVideo.classList.add("photographer-media");
+            selectVideo.classList.add("lightbox-media");
             selectVideo.setAttribute('src', vidSource);
             selectVideo.setAttribute('type', "video/mp4");
             selectVideo.setAttribute('alt', `${title}`);
