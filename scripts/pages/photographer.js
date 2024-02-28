@@ -60,7 +60,6 @@ function searchPosition(id) {
   return -1;
 }
 
-
 function plusSlides(n) {
   showSlides(slideIndex += n);
 }
@@ -80,9 +79,10 @@ function showSlides(n) {
   slides[slideIndex].style.display = "block";
 }
 
-function displayLikesAndPrice(likes, price) {
-    // Tarifs et Likes
+// Tarifs et Likes
 
+function displayLikesAndPrice(likes, price) {
+    
     const likesArea = document.querySelector(".likes-area");
     likesArea.innerHTML="";
     
@@ -119,39 +119,130 @@ async function init() {
     displayData(listMedia);
     sortMedias(listMedia);
 }
+
+// Filtres
+
+const filterContainer = document.getElementById('filter-container');
+
+const mediaFilters = document.createElement('section');
+mediaFilters.classList.add('media-filters-container');
+
+const dropdown = document.createElement('div');
+dropdown.classList.add('dropdown');
+dropdown.setAttribute("role", "menubar");
+dropdown.setAttribute("tabIndex", 0);
+
+dropdown.addEventListener("keydown", function(e) {
+    let dropdownMenu = document.querySelector('.menu-dropdown');
+    if (e.key == "Enter") {
+        dropdownMenu.style.visibility = "visible";
+        dropdownMenu.style.opacity = 1;
+        dropdownMenu.style.transform = "translateY(0%)";
+    };
+    if (e.key == "Escape") {
+        dropdownMenu.style.visibility = "hidden";
+        dropdownMenu.style.opacity = 0;
+        dropdownMenu.style.transform = "translateY(-50%)";
+    };
+});
+
+const menuDropdown = document.createElement('div');
+menuDropdown.classList.add('menu-dropdown');
+
+const Popularite = document.createElement('button');
+Popularite.classList.add('menu-filter');
+Popularite.classList.add('select-popularity');
+Popularite.textContent = "Popularité";
+Popularite.setAttribute("role", "menu");
+Popularite.setAttribute("type", "button");
+Popularite. setAttribute("value", "type00");
+
+const DateFilter = document.createElement('button');
+DateFilter.classList.add("menu-filter");
+DateFilter.classList.add("select-date");
+DateFilter.textContent = "Date";
+DateFilter.setAttribute("role", "menu");
+DateFilter.setAttribute("type", "button");
+DateFilter.setAttribute("value", "type01");
+
+const Titre = document.createElement('button');
+Titre.classList.add("menu-filter");
+Titre.classList.add("select-title");
+Titre.textContent = "Titre";
+Titre.setAttribute("role", "menu");
+Titre.setAttribute("type", "button");
+Titre.setAttribute("value", "type02");
+
+const chevronIcon = document.createElement('i');
+chevronIcon.setAttribute('class', 'chevron-icon fa-sharp fa-solid fa-angle-up');
+
+const emptyButton = document.createElement('div');
+emptyButton.classList.add("empty-button");
+const emptyButton2 = document.createElement('div');
+emptyButton.classList.add("empty-button");
+const emptyButtonWhite = document.createElement('div');
+emptyButton.classList.add("empty-button-white");
+const emptyButtonWhite2 = document.createElement('div');
+emptyButton2.classList.add("empty-button-white");
+
+filterContainer.appendChild(mediaFilters);
+mediaFilters.appendChild(dropdown);
+dropdown.appendChild(Popularite);
+Popularite.appendChild(chevronIcon);
+dropdown.appendChild(menuDropdown);
+menuDropdown.appendChild(emptyButton);
+emptyButton.appendChild(emptyButtonWhite);
+menuDropdown.appendChild(DateFilter);
+menuDropdown.appendChild(emptyButton2);
+emptyButton.appendChild(emptyButtonWhite2);
+menuDropdown.appendChild(Titre);
+
 /* Bloc de tri des cartes */
 
 function sortMedias(listMedia){
-    const selectSort = document.getElementById("tri");
     console.log(listMedia);
-    selectSort.addEventListener("change", function(event) {
+
+    Popularite.addEventListener("click", function (event){
         event.preventDefault();
         event.stopPropagation();
-        console.log("selectSort"+selectSort.value)
-        // Il faut ajouter une condition de vérification de la value selected 
-        if(selectSort.value=="type00"){
-            listMedia.sort(function (a, b) {
-                if(a.likes < b.likes){
-                    return 1;
-                }
-                if(a.likes > b.likes){
-                    return -1;
-                };
-                return 0; 
-            });
-        }
-        if(selectSort.value=="type01"){
-            listMedia.sort(function (a, b) {
-                if(a.date < b.date){
-                    return -1;
-                }
-                if(a.date > b.date){
-                    return 1;
-                };
-                return 0; 
-            });
-        }
-        if(selectSort.value=="type02"){
+        listMedia.sort(function (a, b) {
+            if(a.likes < b.likes){
+                return 1;
+            }
+            if(a.likes > b.likes){
+                return -1;
+            };
+            return 0; 
+        });
+        //Commenter si j'utilise l'autre option
+        // displayData(listMedia);
+
+        // Deuxieme façon pour actualiser le dom 
+        reorganizeMedias(listMedia);
+    });
+
+    DateFilter.addEventListener("click", function(event){
+        event.preventDefault();
+        event.stopPropagation();
+        listMedia.sort(function (a, b) {
+            if(a.date < b.date){
+                return -1;
+            }
+            if(a.date > b.date){
+                return 1;
+            };
+            return 0; 
+        });
+        //Commenter si j'utilise l'autre option
+        // displayData(listMedia);
+
+        // Deuxieme façon pour actualiser le dom 
+        reorganizeMedias(listMedia);
+    })
+
+    Titre.addEventListener("click", function(event){
+        event.preventDefault();
+        event.stopPropagation();
         listMedia.sort(function (a, b) {
             if(a.title < b.title){
                 return -1;
@@ -161,15 +252,61 @@ function sortMedias(listMedia){
             };
             return 0; 
         });
-    }
+
+        //Commenter si j'utilise l'autre option
+        // displayData(listMedia);
+
+        // Deuxieme façon pour actualiser le dom 
+        reorganizeMedias(listMedia);
+    })
+
+    // const selectSort = document.getElementById("tri");
+    // selectSort.addEventListener("change", function(event) {
+    //     event.preventDefault();
+    //     event.stopPropagation();
+    //     console.log("selectSort"+selectSort.value)
+    //     // Il faut ajouter une condition de vérification de la value selected 
+    //     if(selectSort.value=="type00"){
+    //         listMedia.sort(function (a, b) {
+    //             if(a.likes < b.likes){
+    //                 return 1;
+    //             }
+    //             if(a.likes > b.likes){
+    //                 return -1;
+    //             };
+    //             return 0; 
+    //         });
+    //     }
+    //     if(selectSort.value=="type01"){
+    //         listMedia.sort(function (a, b) {
+    //             if(a.date < b.date){
+    //                 return -1;
+    //             }
+    //             if(a.date > b.date){
+    //                 return 1;
+    //             };
+    //             return 0; 
+    //         });
+    //     }
+    //     if(selectSort.value=="type02"){
+    //     listMedia.sort(function (a, b) {
+    //         if(a.title < b.title){
+    //             return -1;
+    //         }
+    //         if(a.title > b.title){
+    //             return 1;
+    //         };
+    //         return 0; 
+    //     });
+    // }
+
+    // });
 
     //Commenter si j'utilise l'autre option
-    displayData(listMedia);
+    // displayData(listMedia);
 
     // Deuxieme façon pour actualiser le dom 
     // reorganizeMedias(listMedia);
-
-    });
 }
 
 function reorganizeMedias(listMedia){
@@ -197,7 +334,6 @@ function reorganizeMedias(listMedia){
         const nodeSearchedModal = arrayCreatedMedias[positionElement];
         const nodeReferenceModal = arrayCreatedMedias[positionRefence];
         wrapperModal.insertBefore(nodeSearchedModal, nodeReferenceModal);
-
 
         positionRefence++;
     });
