@@ -259,54 +259,6 @@ function sortMedias(listMedia){
         // Deuxieme façon pour actualiser le dom 
         reorganizeMedias(listMedia);
     })
-
-    // const selectSort = document.getElementById("tri");
-    // selectSort.addEventListener("change", function(event) {
-    //     event.preventDefault();
-    //     event.stopPropagation();
-    //     console.log("selectSort"+selectSort.value)
-    //     // Il faut ajouter une condition de vérification de la value selected 
-    //     if(selectSort.value=="type00"){
-    //         listMedia.sort(function (a, b) {
-    //             if(a.likes < b.likes){
-    //                 return 1;
-    //             }
-    //             if(a.likes > b.likes){
-    //                 return -1;
-    //             };
-    //             return 0; 
-    //         });
-    //     }
-    //     if(selectSort.value=="type01"){
-    //         listMedia.sort(function (a, b) {
-    //             if(a.date < b.date){
-    //                 return -1;
-    //             }
-    //             if(a.date > b.date){
-    //                 return 1;
-    //             };
-    //             return 0; 
-    //         });
-    //     }
-    //     if(selectSort.value=="type02"){
-    //     listMedia.sort(function (a, b) {
-    //         if(a.title < b.title){
-    //             return -1;
-    //         }
-    //         if(a.title > b.title){
-    //             return 1;
-    //         };
-    //         return 0; 
-    //     });
-    // }
-
-    // });
-
-    //Commenter si j'utilise l'autre option
-    // displayData(listMedia);
-
-    // Deuxieme façon pour actualiser le dom 
-    // reorganizeMedias(listMedia);
 }
 
 function reorganizeMedias(listMedia){
