@@ -1,4 +1,8 @@
+// Template factory des médias de photographe
+
 function mediaTemplate (data) {
+
+    // Infos json dans une variable
 
     const { id, photographerId, title, video, image, likes, date, price, name } = data;
 
@@ -9,8 +13,7 @@ function mediaTemplate (data) {
     let nbrLikes = likes;
 
     
-    // créer une seule mediaSource qui contient un if / else pour 
-    // le media et la return pour l'utiliser dans la lightbox
+    // Création de la carte des médias
 
     function getMedia() {
         
@@ -41,10 +44,6 @@ function mediaTemplate (data) {
             mediaContent.appendChild(selectVideo);
         }
 
-        // mediaContent.addEventListener("click", function(event){
-        //     event.preventDefault();
-        //     openLightbox(id);
-        // })
         card.appendChild(mediaContent);
 
         let infoContainer = document.createElement('div');
@@ -71,7 +70,7 @@ function mediaTemplate (data) {
         likesMedia.appendChild(number);
         likesMedia.appendChild(heartIcon);
 
-        // Mettre le calcul des likes dans la card
+        // Calcul des likes des médias
 
         heartIcon.addEventListener("click", function (event){
             event.preventDefault();
@@ -95,6 +94,8 @@ function mediaTemplate (data) {
 
         return card; 
     };
+
+    // Création de la lightbox
 
     function getMediaLightbox (){
 
@@ -131,5 +132,8 @@ function mediaTemplate (data) {
 
         return div;
     }
+
+    // On retourne toutes les infos et fonctions que l'on va utiliser
+
     return {getMedia, getMediaLightbox, nbrLikes, price, date, id, photographerId};
 }

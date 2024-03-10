@@ -1,3 +1,5 @@
+    // On appelle les fonctions et éléments pour les placer sur notre page.
+    
     async function displayData(photographers) {
         const photographersSection = document.querySelector(".photographer_section");
         photographersSection.innerHTML="";

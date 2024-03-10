@@ -1,7 +1,11 @@
+// Création de la template des profils de photographe
+
 function photographerTemplate(data) {
     const { name, portrait, id, tagline, city, country, price } = data;
 
-    const picture = `./assets/photographers/${portrait}`;
+    const picture = `./assets/photographers/${portrait}`;               
+
+    // Création de la carte des photographes
 
     function getUserCardDOM() {
 
@@ -52,8 +56,9 @@ function photographerTemplate(data) {
     }
 
     // Affichage du bandeau infos sur la page photographe
+
     function getHeaderPhotographer() {
-//créer le bouton ici avec un event listener / le positionner correctement
+
         const picture = `./assets/photographers/${portrait}`;
         const photographHeader = document.createElement("div");
         photographHeader.classList.add("header__container")
@@ -110,6 +115,8 @@ function photographerTemplate(data) {
 
         return photographHeader;
     }
+
+    // On retourne les informations et les éléments que l'on souhaite utiliser dans la page
 
     return { getUserCardDOM , getHeaderPhotographer}
 }

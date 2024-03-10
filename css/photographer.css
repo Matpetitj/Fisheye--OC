@@ -237,7 +237,7 @@ input[type="email" i] {
     font-size: 18px;
     font-weight: 700;
     letter-spacing: .5px;
-    height: calc((170px/3) - 1px); /* <<< ICI, IL FAUDRA SOUSTRAIRE 2px LORSQUE LE 2EME EMPTYBUTTON SERA AJOUTE */
+    height: calc((168px/3) - 1px);
 }
 
 .menu-filter > i {

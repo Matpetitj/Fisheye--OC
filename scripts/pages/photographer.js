@@ -8,6 +8,8 @@ function getId() {
     return id;
 }
 
+// Fonction de chargement du DOM
+
 async function displayData(listMedia) {
     const headerSection = document.querySelector(".photograph-header");
     headerSection.innerHTML="";
@@ -36,6 +38,8 @@ async function displayData(listMedia) {
    
 }
 
+// Ouverture et fermeture de la lightbox
+
 var slideIndex = 0;
 function openLightbox(id) {
     let mediaModal = document.querySelector('.medias-modal');
@@ -51,6 +55,8 @@ function closeLightbox() {
     mediaModal.style.display = "none";
 }
 
+// Recherche de l'index de la slide
+
 function searchPosition(id) {
     let slides = document.getElementsByClassName("mySlides");
     for (i = 0; i < slides.length; i++) {
@@ -60,6 +66,8 @@ function searchPosition(id) {
   return -1;
 }
 
+// Navigation entre les slides de la lightbox
+
 function plusSlides(n) {
   showSlides(slideIndex += n);
 }
@@ -67,6 +75,8 @@ function plusSlides(n) {
 function currentSlide(n) {
   showSlides(slideIndex = n);
 }
+
+// Affichage de la lightbox
 
 function showSlides(n) {
   let i;
@@ -148,8 +158,9 @@ function sortMedias(listMedia){
     });
 }
 
+// Fonction de tri des médias
+
 function sort (type, listMedia) {
-        // Il faut ajouter une condition de vérification de la value selected 
         if(type=="type00"){
             listMedia.sort(function (a, b) {
                 if(a.likes < b.likes){
@@ -190,6 +201,8 @@ function sort (type, listMedia) {
     // Deuxieme façon pour actualiser le dom 
     reorganizeMedias(listMedia);
 }
+
+// Fonction de réorganisation du DOM sans régénération du DOM
 
 function reorganizeMedias(listMedia){
     const wrapper = document.querySelector(".media-container");
