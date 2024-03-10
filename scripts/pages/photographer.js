@@ -89,6 +89,20 @@ function showSlides(n) {
   slides[slideIndex].style.display = "block";
 }
 
+// Navigation entre les slides
+
+document.addEventListener('keydown', function(event) {
+    if (event.key === 'ArrowLeft') {
+      // Flèche gauche
+      slideIndex -= 1;
+      showSlides(slideIndex);
+    } else if (event.key === 'ArrowRight') {
+      // Flèche droite
+      slideIndex += 1;
+      showSlides(slideIndex);
+    }
+  });
+
 let triggerCloseModal = document.querySelector('.close-modal');
 triggerCloseModal.addEventListener("keydown", function(e){
     let mediaModal = document.querySelector('.medias-modal');
