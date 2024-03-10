@@ -75,6 +75,8 @@ function photographerTemplate(data) {
         const btnContact = document.createElement('button');
         btnContact.textContent = "Contactez-moi";
         btnContact.classList.add("contact_button");
+        btnContact.setAttribute('aria-label', `Bouton pour ouvrir le formulaire`);
+        btnContact.setAttribute('role', `bouton`);
         btnCenter.appendChild(btnContact);
 
         btnContact.addEventListener("click", (e) => {
@@ -90,14 +92,17 @@ function photographerTemplate(data) {
         const h1 = document.createElement('h1');
         h1.textContent = name;
         h1.classList.add('header__name');
+        h1.setAttribute('aria-label', `Photographe ${name}`);
 
         const location = document.createElement('p');
         location.textContent = city + ', ' + country;
         location.classList.add("header__location");
+        location.setAttribute('aria-label', `Le photographe ${name} vient de ${city}, ${country}`);
 
         const text = document.createElement('p');
         text.textContent = tagline;
         text.classList.add("header__tagline");
+        text.setAttribute('aria-label', `La devise de ${name} est : "${tagline}"`);
 
         infoLeft.appendChild(h1);
         infoLeft.appendChild(location);
@@ -109,6 +114,7 @@ function photographerTemplate(data) {
         const img = document.createElement('img');
         img.setAttribute("src", picture);
         img.classList.add("header__img");
+        img.setAttribute("alt", 'Photo de ' + name);
 
         imgContainer.appendChild(img);
         infoRight.appendChild(imgContainer);
