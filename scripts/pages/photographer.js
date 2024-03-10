@@ -48,7 +48,6 @@ function openLightbox(id) {
     slideIndex = searchPosition(id);
     console.log(slideIndex,"/", id)
     showSlides(slideIndex);
-    return true;
 }
 
 function closeLightbox() {
@@ -73,9 +72,9 @@ function plusSlides(n) {
   showSlides(slideIndex += n);
 }
 
-function currentSlide(n) {
-  showSlides(slideIndex = n);
-}
+// function currentSlide(n) {
+//   showSlides(slideIndex = n);
+// }
 
 // Affichage de la lightbox
 
@@ -89,18 +88,6 @@ function showSlides(n) {
   }
   slides[slideIndex].style.display = "block";
 }
-
-document.addEventListener("keydown", function(e) {
-    let mediaModal = document.querySelector('.medias-modal');
-    if(mediaModal.style.display == "block"){
-        if(e.key == 'ArrowLeft'){
-            currentSlide();
-        }
-        if(e.key == 'ArrowRight'){
-            plusSlides();
-        }
-    }
-});
 
 let triggerCloseModal = document.querySelector('.close-modal');
 triggerCloseModal.addEventListener("keydown", function(e){
