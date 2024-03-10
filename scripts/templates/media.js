@@ -78,6 +78,7 @@ function mediaTemplate (data) {
 
             if(heartIcon.classList.contains('liked')) {
                 nbrLikes = nbrLikes - 1;
+                heartIcon.classList.remove('liked');
             } else {
                 nbrLikes = nbrLikes + 1;
                 heartIcon.classList.add('liked');

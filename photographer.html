@@ -10,7 +10,7 @@
   </head>
   <body>
     <header>
-      <a href="index.html" class="logo_link"  tabindex='0'><img src="assets/images/logo.png" class="logo" /></a>
+      <a href="index.html" class="logo_link"  tabindex='0'><img src="assets/images/logo.png" class="logo" alt="logo"/></a>
     </header>
     <main id="main">
       <div class="photograph-header">
@@ -21,7 +21,7 @@
         <label for="tri">Trier par </label>
         <section class="media-filters-container">
           <div class="dropdown" role="menubar">
-            <button class="menu-filter select-popularity" role="menu" type="button" id="popularity-btn">Popularité
+            <button class="menu-filter select-popularity" role="menu" type="button" id="popularity-btn" aria-label="Popularité">Popularité
               <i class="chevron-icon fa-sharp fa-solid fa-angle-up" aria-hidden="true"></i>
             </button>
             <div class="menu-dropdown">
@@ -30,9 +30,9 @@
                 </div>
                 <div></div>
               </div>
-              <button class="menu-filter select-date" role="menu" type="button" id="date-btn">Date</button>
+              <button class="menu-filter select-date" role="menu" type="button" id="date-btn" aria-label="Date">Date</button>
               <div class="empty-button-white"></div>
-              <button class="menu-filter select-title" role="menu" type="button" id="title-btn">Titre</button>
+              <button class="menu-filter select-title" role="menu" type="button" id="title-btn" aria-label="Titre">Titre</button>
             </div></div>
         </section>
         <!-- <select id="tri" name="tri">
@@ -56,9 +56,9 @@
             <h2>Contactez-moi</h2>
             <p id="nameContactForm"></p>
           </div>
-          <img id="contact-form_close-button" tabindex='0' aria-label='Fermer la modale contact' src="assets/icons/close.svg" onclick="closeModal()" onkeydown="closeModalByKeyPress(event)" />
+          <img id="contact-form_close-button" tabindex='0' aria-label='Fermer la modale contact' src="assets/icons/close.svg" onclick="closeModal()" onkeydown="closeModalByKeyPress(event)" alt="Fermeture du formulaire"/>
         </header>
-        <form>
+        <form aria-label="Formulaire">
           <div>
             <label  tabindex="1" for="firstname">Prénom</label>
             <input type="text" id="firstname" name="firstname" required />
@@ -78,10 +78,10 @@
     </div>
     <!-- Lightbox -->
     <div class="medias-modal">
-      <span class="close-modal cursor" onclick="closeLightbox()">&times;</span>
+      <span class="close-modal cursor" onclick="closeLightbox()" aria-label="Close image" tabIndex=1>&times;</span>
       <div class="media-modal-content"></div>
-      <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-      <a class="next" onclick="plusSlides(1)">&#10095;</a>
+      <a class="prev" onclick="plusSlides(-1)" aria-label="Previous image" tabIndex=1>&#10094;</a>
+      <a class="next" onclick="plusSlides(1)" aria-label="Next image" tabIndex=1>&#10095;</a>
     </div>
     <script src="./scripts/API.js"></script>
     <script src="./scripts/templates/photographer.js"></script>
