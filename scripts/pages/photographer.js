@@ -72,10 +72,6 @@ function plusSlides(n) {
   showSlides(slideIndex += n);
 }
 
-// function currentSlide(n) {
-//   showSlides(slideIndex = n);
-// }
-
 // Affichage de la lightbox
 
 function showSlides(n) {
@@ -232,7 +228,7 @@ function reorganizeMedias(listMedia){
     const wrapper = document.querySelector(".media-container");
     const wrapperModal = document.querySelector(".media-modal-content");
     
-    let positionRefence = 0; 
+    let positionReference = 0; 
     listMedia.forEach(element => {
         console.log("element", element);
       
@@ -246,15 +242,15 @@ function reorganizeMedias(listMedia){
 
         // Deplacer le node recherché sur la page index avant le node de la position de reference 
         const nodeSearched = arrayCreatedMedias[positionElement];
-        const nodeReference = arrayCreatedMedias[positionRefence];
+        const nodeReference = arrayCreatedMedias[positionReference];
         wrapper.insertBefore(nodeSearched, nodeReference);
 
         // Deplacer le node modal recherché sur la lightbox avant l'element de la position de reference 
         const nodeSearchedModal = arrayCreatedMediasModal[positionElement];
-        const nodeReferenceModal = arrayCreatedMediasModal[positionRefence];
+        const nodeReferenceModal = arrayCreatedMediasModal[positionReference];
         wrapperModal.insertBefore(nodeSearchedModal, nodeReferenceModal);
 
-        positionRefence++;
+        positionReference++;
     });
 }
 
