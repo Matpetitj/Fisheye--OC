@@ -149,6 +149,11 @@ h1 {
     border-radius: 4px;
     color: #FFFFFF;
     font-size: 18px;
-    font-weight: 700;
+    font-weight: 500;
     padding: 20px 40px;
+}
+
+#submit_button:hover {
+    background-color: #691414;
+    cursor: pointer;
 }
