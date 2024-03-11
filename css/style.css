@@ -1,6 +1,10 @@
 @import url("photographer.css");
 @import url("lightbox.css");
 
+:root {
+    --red: #901C1C;
+}
+
 body {
     font-family: "DM Sans", sans-serif;
     margin: 0;
@@ -137,4 +141,14 @@ h1 {
     font-size: 20px;
     color: #525252;
     font-weight: 500;
+}
+
+#submit_button {
+    background-color: var(--red);
+    border: none;
+    border-radius: 4px;
+    color: #FFFFFF;
+    font-size: 18px;
+    font-weight: 700;
+    padding: 20px 40px;
 }
